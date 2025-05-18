@@ -25,7 +25,5 @@ public:
 
 	UPROPERTY(EditAnyWhere)
 	FVector MyVector = FVector(1, 2, 3);
-
-	UPROPERTY(EditAnyWhere)
-	float MyX = 0.f;
+	
 };
