@@ -15,11 +15,10 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	MyInt = 9;
 
-	APlusB = InputA + InputB;
-	APlusBFloat = InputFloatA + InputFloatB;
+	MyX = MyVector.X;
+	MyVector.Y = MyX;
+	MyVector.Z = MyX;
 }
 
 // Called every frame
