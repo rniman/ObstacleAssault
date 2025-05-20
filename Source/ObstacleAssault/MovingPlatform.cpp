@@ -17,6 +17,8 @@ void AMovingPlatform::BeginPlay()
 	Super::BeginPlay();
 
 	SetActorScale3D(FVector(5.0, 5.0f, 0.5f));
+
+	SetActorLocation(FVector(-15090.000000, -2650.000000,4056.000000));
 }
 
 // Called every frame
@@ -24,8 +26,16 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	MyVector.Y = MyVector.Y + 1;
+	// Move platform forwards
+		// Get current location
+	FVector CurrentLocation = GetActorLocation();
+		// Add vector to that location
+	CurrentLocation += PlatformVelocity * DeltaTime;
+		// Set the location
+	SetActorLocation(CurrentLocation);
+	// Send platform back if gone too far
+		// Check how far we've moved
+		// Reverse direction of motion if gone too far
 
-	SetActorLocation(MyVector);
 }
 
