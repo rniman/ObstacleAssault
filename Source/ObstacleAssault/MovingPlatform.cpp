@@ -18,13 +18,13 @@ void AMovingPlatform::BeginPlay()
 
 	StartLocation = GetActorLocation();
 
-	FString Name = GetName();
-	UE_LOG(LogTemp, Display, TEXT("Here's My String: %s"), *Name);
+	// FString Name = GetName();
+	// UE_LOG(LogTemp, Display, TEXT("Here's My String: %s"), *Name);
 
-	FString MyString = "My String Value";
-	UE_LOG(LogTemp, Display, TEXT("Here's My String: %s"), *MyString);
+	// FString MyString = "My String Value";
+	// UE_LOG(LogTemp, Display, TEXT("Here's My String: %s"), *MyString);
 
-	UE_LOG(LogTemp, Display, TEXT("Configured Moved Distance: %f"), MoveDistance);
+	// UE_LOG(LogTemp, Display, TEXT("Configured Moved Distance: %f"), MoveDistance);
 }
 
 // Called every frame
@@ -32,6 +32,12 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+}
+
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
 	// Move platform forwards
 		// Get current location
 	FVector CurrentLocation = GetActorLocation();
@@ -46,7 +52,7 @@ void AMovingPlatform::Tick(float DeltaTime)
 	if (DistanceMoved > MoveDistance)
 	{
 		float OverShoot = DistanceMoved - MoveDistance;
-		UE_LOG(LogTemp, Display, TEXT("%s - Over Shoot: %f"), *GetName(), OverShoot);
+		//UE_LOG(LogTemp, Display, TEXT("%s - Over Shoot: %f"), *GetName(), OverShoot);
 
 		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
 		StartLocation = StartLocation + MoveDirection * MoveDistance;
@@ -56,3 +62,7 @@ void AMovingPlatform::Tick(float DeltaTime)
 	}
 }
 
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+	UE_LOG(LogTemp, Display, TEXT("%s RotatePlatform... "), *GetName());
+}
